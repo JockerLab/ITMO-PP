@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="22e6c4c6-f27c-411c-a3aa-4be3a72dcb13" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1hV6wshFhgf1CGVub23IBit8bEo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../linked-list-set-JockerLab" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunManager" selected="JUnit.ConcurrentStressTest">
+    <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
+      <setting name="replType" value="NREPL" />
+      <setting name="execution" value="LEININGEN" />
+      <setting name="jvmArgs" value="" />
+      <setting name="parameters" value="" />
+      <setting name="workingDir" value="" />
+      <setting name="profiles" value="" />
+      <setting name="aliases" value="" />
+      <setting name="fixLineNumbers" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="ClojureREPL" factoryName="Remote" activateToolWindowBeforeRun="false">
+      <setting name="host" value="" />
+      <setting name="port" value="0" />
+      <setting name="replType" value="SOCKET" />
+      <setting name="configType" value="SPECIFY" />
+      <setting name="replPortFileType" value="STANDARD" />
+      <setting name="customPortFile" value="" />
+      <setting name="fixLineNumbers" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ConcurrentStressTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dijkstra" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dijkstra.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dijkstra" />
+      <option name="MAIN_CLASS_NAME" value="dijkstra.ConcurrentStressTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConcurrentStressTest.test on very small graphs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dijkstra" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dijkstra.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dijkstra" />
+      <option name="MAIN_CLASS_NAME" value="dijkstra.ConcurrentStressTest" />
+      <option name="METHOD_NAME" value="test on very small graphs" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dijkstra" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dijkstra.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dijkstra" />
+      <option name="MAIN_CLASS_NAME" value="dijkstra.SimpleTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleTest.Dijkstra on a small graph" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dijkstra" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dijkstra.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dijkstra" />
+      <option name="MAIN_CLASS_NAME" value="dijkstra.SimpleTest" />
+      <option name="METHOD_NAME" value="Dijkstra on a small graph" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ConcurrentStressTest" />
+        <item itemvalue="JUnit.ConcurrentStressTest.test on very small graphs" />
+        <item itemvalue="JUnit.SimpleTest" />
+        <item itemvalue="JUnit.SimpleTest.Dijkstra on a small graph" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22e6c4c6-f27c-411c-a3aa-4be3a72dcb13" name="Default Changelist" comment="" />
+      <created>1600084155090</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600084155090</updated>
+      <workItem from="1600084156168" duration="14623000" />
+      <workItem from="1600105309606" duration="44000" />
+      <workItem from="1600106632255" duration="474000" />
+      <workItem from="1600185085625" duration="4265000" />
+      <workItem from="1600191844221" duration="2434000" />
+      <workItem from="1600195813528" duration="250000" />
+      <workItem from="1600352635695" duration="527000" />
+      <workItem from="1600517256164" duration="210000" />
+      <workItem from="1600522808728" duration="1727000" />
+      <workItem from="1600524608522" duration="30000" />
+      <workItem from="1600524954191" duration="136000" />
+      <workItem from="1600525140221" duration="417000" />
+      <workItem from="1600546638660" duration="29000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="437" height="466" key="DebuggerActiveHint" timestamp="1600103101013">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="437" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1600103101013" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600546666532">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600546666532" />
+    <state width="1493" height="222" key="GridCell.Tab.0.bottom" timestamp="1600525556469">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="222" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600525556469" />
+    <state width="1493" height="222" key="GridCell.Tab.0.center" timestamp="1600525556468">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="222" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600525556468" />
+    <state width="1493" height="222" key="GridCell.Tab.0.left" timestamp="1600525556468">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="222" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600525556468" />
+    <state width="1493" height="222" key="GridCell.Tab.0.right" timestamp="1600525556468">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="222" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600525556468" />
+    <state width="1493" height="237" key="GridCell.Tab.1.bottom" timestamp="1600103559103">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="237" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600103559103" />
+    <state width="1493" height="237" key="GridCell.Tab.1.center" timestamp="1600103559102">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="237" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1600103559102" />
+    <state width="1493" height="237" key="GridCell.Tab.1.left" timestamp="1600103559102">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="237" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1600103559102" />
+    <state width="1493" height="237" key="GridCell.Tab.1.right" timestamp="1600103559103">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="237" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1600103559103" />
+    <state x="420" y="145" width="694" height="678" key="search.everywhere.popup" timestamp="1600101516830">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="420" y="145" width="694" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600101516830" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dijkstra$SimpleTest_Dijkstra_on_a_small_graph.ic" NAME="SimpleTest.Dijkstra on a small graph Coverage Results" MODIFIED="1600102941051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dijkstra.*</FILTER>
+    </SUITE>
+  </component>
+</project>

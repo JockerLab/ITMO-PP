@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class BlockingStackTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class BlockingStackTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/default-package.html">default-package</a> &gt; BlockingStackTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">2</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1m23.50s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="modelCheckingTest"></a>
+<h3 class="failures">modelCheckingTest</h3>
+<span class="code">
+<pre>org.jetbrains.kotlinx.lincheck.LincheckAssertionError: 
+= Invalid execution results =
+Parallel part:
+| push(1): void [-,2,1] | push(6):  void         | pop():   -8            [-,2,-] |
+|                       | push(-8): void [-,1,-] | pop():   SUSPENDED + 1 [-,2,1] |
+|                       | pop():    4    [-,2,-] | push(4): void          [1,2,2] |
+---
+values in &quot;[..]&quot; brackets indicate the number of completed operations 
+in each of the parallel threads seen at the beginning of the current operation
+---
+
+= The following interleaving leads to the error =
+Parallel part trace:
+|                                                                               | push(6): void                                                                              |                                                                                                                 |
+|                                                                               | push(-8): void                                                                             |                                                                                                                 |
+|                                                                               | pop()                                                                                      |                                                                                                                 |
+|                                                                               |   pop(): 4 at BlockingStackTest.pop(BlockingStackTest.kt:18)                               |                                                                                                                 |
+|                                                                               |     getAndDecrement(): 2 at BlockingStackImpl.pop(BlockingStackImpl.kt:133)                |                                                                                                                 |
+|                                                                               |     getValue(): Node@1 at BlockingStackImpl.pop(BlockingStackImpl.kt:137)                  |                                                                                                                 |
+|                                                                               |     element.WRITE(Node@1) at BlockingStackImpl.pop(BlockingStackImpl.kt:137)               |                                                                                                                 |
+|                                                                               |     switch                                                                                 |                                                                                                                 |
+|                                                                               |                                                                                            | pop(): -8                                                                                                       |
+|                                                                               |                                                                                            | pop()                                                                                                           |
+|                                                                               |                                                                                            |   pop(): CoroutineSingletons@1 at BlockingStackTest.pop(BlockingStackTest.kt:18)                                |
+|                                                                               |                                                                                            |     getAndDecrement(): 0 at BlockingStackImpl.pop(BlockingStackImpl.kt:133)                                     |
+|                                                                               |                                                                                            |     suspend(): CoroutineSingletons@1 at BlockingStackImpl.pop(BlockingStackImpl.kt:155)                         |
+|                                                                               |                                                                                            |       enqueue(&lt;cont&gt;) at BlockingStackImpl.suspend(BlockingStackImpl.kt:86)                                     |
+|                                                                               |                                                                                            |         getValue(): Segment@1 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:25)                    |
+|                                                                               |                                                                                            |         getAndIncrement(): 0 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:26)                     |
+|                                                                               |                                                                                            |         switch                                                                                                  |
+| push(1)                                                                       |                                                                                            |                                                                                                                 |
+|   push(1) at BlockingStackTest.push(BlockingStackTest.kt:15)                  |                                                                                            |                                                                                                                 |
+|     getAndIncrement(): -1 at BlockingStackImpl.push(BlockingStackImpl.kt:109) |                                                                                            |                                                                                                                 |
+|     resume(1) at BlockingStackImpl.push(BlockingStackImpl.kt:128)             |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       dequeue(): null at BlockingStackImpl.resume(BlockingStackImpl.kt:92)    |                                                                                            |                                                                                                                 |
+|       switch (reason: active lock detected)                                   |                                                                                            |                                                                                                                 |
+|                                                                               |                                                                                            |         get(0): AtomicRef@1 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:39)                      |
+|                                                                               |                                                                                            |         compareAndSet(null,&lt;cont&gt;): false at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:39)        |
+|                                                                               |                                                                                            |         getValue(): Segment@1 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:25)                    |
+|                                                                               |                                                                                            |         getAndIncrement(): 1 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:26)                     |
+|                                                                               |                                                                                            |         get(1): AtomicRef@2 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:39)                      |
+|                                                                               |                                                                                            |         compareAndSet(null,&lt;cont&gt;): false at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:39)        |
+|                                                                               |                                                                                            |         getValue(): Segment@1 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:25)                    |
+|                                                                               |                                                                                            |         getAndIncrement(): 2 at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:26)                     |
+|                                                                               |                                                                                            |         &lt;init&gt;(&lt;cont&gt;) at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:28)                           |
+|                                                                               |                                                                                            |         getValue(): null at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:29)                         |
+|                                                                               |                                                                                            |         compareAndSet(null,Segment@2): true at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:31)      |
+|                                                                               |                                                                                            |         compareAndSet(Segment@1,Segment@2): true at BlockingStackImpl$FAAQueue.enqueue(BlockingStackImpl.kt:32) |
+|                                                                               |                                                                                            |   switch (reason: coroutine is suspended)                                                                       |
+|                                                                               |                                                                                            |   result: SUSPENDED + 1                                                                                         |
+|       dequeue(): &lt;cont&gt; at BlockingStackImpl.resume(BlockingStackImpl.kt:92)  |                                                                                            |                                                                                                                 |
+|   result: void                                                                |                                                                                            |                                                                                                                 |
+|   thread is finished                                                          |                                                                                            |                                                                                                                 |
+|                                                                               |                                                                                            | push(4): void                                                                                                   |
+|                                                                               |                                                                                            |   thread is finished                                                                                            |
+|                                                                               |     element.READ: Node@1 at BlockingStackImpl.pop(BlockingStackImpl.kt:138)                |                                                                                                                 |
+|                                                                               |     element.READ: Node@1 at BlockingStackImpl.pop(BlockingStackImpl.kt:138)                |                                                                                                                 |
+|                                                                               |     element.READ: Node@1 at BlockingStackImpl.pop(BlockingStackImpl.kt:150)                |                                                                                                                 |
+|                                                                               |     element.READ: Node@1 at BlockingStackImpl.pop(BlockingStackImpl.kt:150)                |                                                                                                                 |
+|                                                                               |     get(): Node@2 at BlockingStackImpl.pop(BlockingStackImpl.kt:150)                       |                                                                                                                 |
+|                                                                               |     compareAndSet(Node@1,Node@2): false at BlockingStackImpl.pop(BlockingStackImpl.kt:150) |                                                                                                                 |
+|                                                                               |     getValue(): Node@3 at BlockingStackImpl.pop(BlockingStackImpl.kt:137)                  |                                                                                                                 |
+|                                                                               |     element.WRITE(Node@3) at BlockingStackImpl.pop(BlockingStackImpl.kt:137)               |                                                                                                                 |
+|                                                                               |     element.READ: Node@3 at BlockingStackImpl.pop(BlockingStackImpl.kt:138)                |                                                                                                                 |
+|                                                                               |     element.READ: Node@3 at BlockingStackImpl.pop(BlockingStackImpl.kt:138)                |                                                                                                                 |
+|                                                                               |     element.READ: Node@3 at BlockingStackImpl.pop(BlockingStackImpl.kt:150)                |                                                                                                                 |
+|                                                                               |     element.READ: Node@3 at BlockingStackImpl.pop(BlockingStackImpl.kt:150)                |                                                                                                                 |
+|                                                                               |     get(): Node@2 at BlockingStackImpl.pop(BlockingStackImpl.kt:150)                       |                                                                                                                 |
+|                                                                               |     compareAndSet(Node@3,Node@2): true at BlockingStackImpl.pop(BlockingStackImpl.kt:150)  |                                                                                                                 |
+|                                                                               |     element.READ: Node@3 at BlockingStackImpl.pop(BlockingStackImpl.kt:151)                |                                                                                                                 |
+|                                                                               |   result: 4                                                                                |                                                                                                                 |
+|                                                                               |   thread is finished                                                                       |                                                                                                                 |
+	at org.jetbrains.kotlinx.lincheck.LinChecker.check(LinChecker.kt:51)
+	at org.jetbrains.kotlinx.lincheck.LinChecker$Companion.check(LinChecker.kt:182)
+	at org.jetbrains.kotlinx.lincheck.LinCheckerKt.check(LinChecker.kt:195)
+	at BlockingStackTest.modelCheckingTest(BlockingStackTest.kt:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:119)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="stressTest"></a>
+<h3 class="failures">stressTest</h3>
+<span class="code">
+<pre>org.jetbrains.kotlinx.lincheck.LincheckAssertionError: 
+= Invalid execution results =
+Parallel part:
+| pop(): SUSPENDED + 4 | push(6): void | pop(): 0 |
+|                      | push(4): void |          |
+|                      | push(0): void |          |
+	at org.jetbrains.kotlinx.lincheck.LinChecker.check(LinChecker.kt:51)
+	at org.jetbrains.kotlinx.lincheck.LinChecker$Companion.check(LinChecker.kt:182)
+	at org.jetbrains.kotlinx.lincheck.LinCheckerKt.check(LinChecker.kt:195)
+	at BlockingStackTest.stressTest(BlockingStackTest.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:119)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">modelCheckingTest</td>
+<td class="failures">1m13.27s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">stressTest</td>
+<td class="failures">10.234s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.6.1</a> at 6 янв. 2021 г., 18:23:33</p>
+</div>
+</div>
+</body>
+</html>
